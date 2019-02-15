@@ -1,10 +1,13 @@
 # @makerdao/services-core
 
-A dependency injection framework extracted from [dai.js](https://github.com/makerdao/dai.js). 
+A dependency injection framework extracted from [dai.js](https://github.com/makerdao/dai.js).
 
-### Usage
+### TODO
 
-TODO: finish this example.
+- [ ] bring [ServiceProvider](https://github.com/makerdao/dai.js/blob/dev/src/config/ServiceProvider.js) over
+- [ ] create full usage example
+
+### Usage (TODO)
 
 ```js
 class MyService extends PrivateService {
