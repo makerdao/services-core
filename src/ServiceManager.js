@@ -54,8 +54,7 @@ class ServiceManager extends ServiceManagerBase {
     return (
       service !== null &&
       typeof service === 'object' &&
-      typeof service.manager === 'function' &&
-      service.manager() instanceof ServiceManager
+      typeof service.manager === 'function'
     );
   }
 
