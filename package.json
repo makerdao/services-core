@@ -5,7 +5,8 @@
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
-    "prepublishOnly": "babel -d dist src"
+    "prepublishOnly": "babel -d dist src",
+    "test": "jest"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
