@@ -6,14 +6,13 @@ import ServiceManager, {
 const name = 'IAmAService',
   _ = () => {};
 
-test('should only mark objects with a method manager() returning a ServiceManager as valid', () => {
+test('should only mark objects with a manager() method as valid', () => {
   expect(
     ServiceManager.isValidService({ manager: () => new ServiceManager(name) })
   ).toBe(true);
   expect(ServiceManager.isValidService(null)).toBe(false);
   expect(ServiceManager.isValidService({ manager: true })).toBe(false);
-  expect(ServiceManager.isValidService({ manager: () => true })).toBe(false);
-  expect(ServiceManager.isValidService({ manager: () => ({}) })).toBe(false);
+  expect(ServiceManager.isValidService({ manager: () => ({}) })).toBe(true);
 });
 
 test('should throw an error when no name is provided', () => {
