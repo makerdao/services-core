@@ -1,4 +1,5 @@
 import Container, {
+  ExtractedServiceError,
   InvalidServiceError,
   ServiceAlreadyRegisteredError,
   ServiceNotFoundError,
@@ -62,6 +63,12 @@ test('service() should return a registered service by name', () => {
 test('service() should by default throw when a service is not found', () => {
   expect(() => new Container().service('IDontExist')).toThrow(
     ServiceNotFoundError.Error
+  );
+});
+
+test('service() should throw when trying to access an extracted service', () => {
+  expect(()=> new Container().service('exchange')).toThrow(
+    ExtractedServiceError.Error
   );
 });
 

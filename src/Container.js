@@ -16,6 +16,13 @@ class ServiceNotFoundError extends Error {
   }
 }
 
+class ExtractedServiceError extends Error {
+  constructor(name) {
+    // prettier-ignore
+    super('Service with name \'' + name + '\' has been extracted from the core dai.js library into a discrete plugin. Please refer to the documentation here to install and add it to your configuration: \n\n https://github.com/makerdao/dai.js/wiki/Basic-Usage-(Plugins) \n\n');
+  }
+}
+
 // exported just for testing
 export function orderServices(services) {
   const edges = [];
@@ -52,8 +59,14 @@ class Container {
   }
 
   service(name, throwIfMissing = true) {
+    const extractedServices = ['exchange'];
+
     if (!name) {
       throw new Error('Provide a service name.');
+    }
+
+    if (!this._services[name] && throwIfMissing && extractedServices.includes(name)) {
+      throw new ExtractedServiceError(name);
     }
 
     if (!this._services[name] && throwIfMissing) {
@@ -109,6 +122,7 @@ class Container {
 
 export {
   Container as default,
+  ExtractedServiceError,
   InvalidServiceError,
   ServiceAlreadyRegisteredError,
   ServiceNotFoundError
